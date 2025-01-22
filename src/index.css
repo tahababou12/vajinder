@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --chalk-white: #f8f9fa;
+  --slate-dark: #1a1a2e;
+  --accent-blue: #4361ee;
+  --accent-purple: #7209b7;
+  --golden-ratio: 1.618;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  line-height: var(--golden-ratio);
+}
+
+.math-bg {
+  background-image: radial-gradient(circle at 2px 2px, rgba(67, 97, 238, 0.15) 2px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.theorem-card {
+  border-left: 4px solid var(--accent-blue);
+  background: rgba(67, 97, 238, 0.05);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.theorem-card::before {
+  content: "Theorem";
+  position: absolute;
+  top: -12px;
+  left: 1rem;
+  background: var(--accent-blue);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.proof-section {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.proof-section::before {
+  content: "▪";
+  position: absolute;
+  left: 0.5rem;
+  color: var(--accent-purple);
+}
+
+.math-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(1rem * var(--golden-ratio));
+}
+
+.geometric-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.geometric-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes mathFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.math-float {
+  animation: mathFloat 3s ease-in-out infinite;
+}
+
+.dark {
+  --chalk-white: #1a1a2e;
+  --slate-dark: #f8f9fa;
+}
